@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="{% static 'myadmin/dist/css/skins/skin-blue.min.css' %}">
     <!-- 兼容IE9以下浏览器 -->
     <!--[if lt IE 9]>
-  <script src="{% static 'myadmin/local/js/html5shiv.min.js'%}"></script>
-  <script src="{% static 'myadmin/local/js/respond.min.js'%}"></script>
-  <![endif]-->
+    <script src="{% static 'myadmin/local/js/html5shiv.min.js'%}"></script>
+    <script src="{% static 'myadmin/local/js/respond.min.js'%}"></script>
+    <![endif]-->
     <!-- Google Font -->
     <link rel="stylesheet" href="{% static 'myadmin/local/css/google_fonts.css' %}">
 </head>
@@ -286,20 +286,20 @@
 
 <script src="{% static 'myadmin/dist/js/edu-modal-alert-confirm.js' %}"></script>
 
-<!-- 此处可以添加SimLoopl和FastClick插件，用于增强用户体验。 -->
 
-{#<script type="text/javascript">#}
-{#	#}
-{#    Modal.confirm({#}
-{#        msg: "确定要删除吗？",#}
-{#        title: ' 信息提示',#}
-{#        btnok: '确定',#}
-{#        btncl:'取消'#}
-{#      }).on(function (e){#}
-{#        if(e){#}
-{#          Modal.alert({msg: "成功删除",title: ' 信息提示',btnok: '确定',btncl:'取消'});#}
-{#        }#}
-{#      });#}
-{#</script>#}
+<script type="text/javascript">
+    function doDel(url) {
+        Modal.confirm({
+            msg: "确定要删除吗？",
+            title: ' 信息提示',
+            btnok: '确定',
+            btncl: '取消'
+        }).on(function (e) {
+            if (e) {
+                window.location.href = url
+            }
+        })
+    }
+</script>
 </body>
 </html>
