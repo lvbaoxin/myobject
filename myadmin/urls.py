@@ -11,5 +11,8 @@ urlpatterns = [
     path('user/del<int:uid>', user.delete, name="myadmin_user_delete"),  # 执行删除
     path('user/edit<int:uid>', user.edit, name="myadmin_user_edit"),  # 编辑表单
     path('user/update<int:uid>', user.update, name="myadmin_user_update"),  # 执行编辑
-
+    path('login', index.login, name="myadmin_login"),  # 加载登录表单
+    path('dologin', index.dologin, name="myadmin_dologin"),  # 执行登录表单
+    path('logout', index.logout, name="myadmin_logout"),  #  退出登录
+    path('verify', index.verify, name="myadmin_verify"),  #  验证码
 ]
