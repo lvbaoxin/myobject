@@ -4,6 +4,7 @@ from myadmin.views import user
 from myadmin.views import shop
 from myadmin.views import category
 from myadmin.views import product
+from myadmin.views import member
 urlpatterns = [
     path('', index.index, name="myadmin_index"),
     path('login', index.login, name="myadmin_login"),  # 加载登录表单
@@ -39,4 +40,7 @@ urlpatterns = [
     path('product/del<int:pid>', product.delete, name="myadmin_product_delete"),  # 执行删除
     path('product/edit<int:pid>', product.edit, name="myadmin_product_edit"),  # 编辑表单
     path('product/update<int:pid>', product.update, name="myadmin_product_update"),  # 执行编辑
+    # 会员信息路由
+    path('member/<int:pIndex>', member.index, name="myadmin_member_index"),  # 浏览
+    path('member/del<int:mid>', member.delete, name="myadmin_member_delete"),  # 执行删除
 ]

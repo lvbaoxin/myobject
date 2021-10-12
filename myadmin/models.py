@@ -66,7 +66,6 @@ class Product(models.Model):
     update_at = models.DateTimeField(default=datetime.now)
 
     def toDict(self):
-        shopname = self.name.split("-")
         return {'id': self.id, 'shop_id': self.shop_id, 'category_id': self.category_id, 'cover_pic': self.cover_pic,
                 'name': self.name, 'price': self.price, 'status': self.status,
                 'create_at': self.create_at.strftime('%Y-%m-%d %H:%M:%S'),
@@ -74,3 +73,22 @@ class Product(models.Model):
 
     class Meta:
         db_table = 'product'
+
+
+# 会员表
+class Member(models.Model):
+    nickname = models.CharField(max_length=50)
+    avatar = models.CharField(max_length=255)
+    mobile = models.CharField(max_length=50)
+    status = models.IntegerField(default=1)  # 状态1正常2停售9删除
+    create_at = models.DateTimeField(default=datetime.now)
+    update_at = models.DateTimeField(default=datetime.now)
+
+    def toDict(self):
+        return {'id': self.id, 'nickname': self.nickname, 'avatar': self.avatar, 'mobile': self.mobile,
+                'status': self.status,
+                'create_at': self.create_at.strftime('%Y-%m-%d %H:%M:%S'),
+                'update_at': self.update_at.strftime('%Y-%m-%d %H:%M:%S')}
+
+    class Meta:
+        db_table = 'member'
