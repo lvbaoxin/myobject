@@ -15,7 +15,8 @@ class User(models.Model):
     def toDict(self):
         return {'id': self.id, 'username': self.username, 'nickname': self.nickname,
                 'password_hash': self.password_hash, 'password_salt': self.password_salt,
-                'status': self.status, 'create_at': self.create_at.strftime("%Y-%m-%d %H:%M:%S"), 'update_at': self.update_at.strftime("%Y-%m-%d %H:%M:%S")}
+                'status': self.status, 'create_at': self.create_at.strftime("%Y-%m-%d %H:%M:%S"),
+                'update_at': self.update_at.strftime("%Y-%m-%d %H:%M:%S")}
 
     class Meta:
         db_table = 'user'
@@ -40,3 +41,15 @@ class Shop(models.Model):
 
     class Meta:
         db_table = 'shop'
+
+
+# 菜品分类
+class Category(models.Model):
+    shop_id = models.IntegerField()
+    name = models.CharField(max_length=255)
+    status = models.IntegerField(default=1)  # 状态1正常2禁用6管理员9删除
+    create_at = models.DateTimeField(default=datetime.now)
+    update_at = models.DateTimeField(default=datetime.now)
+
+    class Meta:
+        db_table = 'category'

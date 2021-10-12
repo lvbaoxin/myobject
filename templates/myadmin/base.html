@@ -211,13 +211,13 @@
                 <li><a href="{% url 'myadmin_user_index' 1 %}"><i class="fa fa-users"></i> <span>员工管理</span></a></li>
                 <li><a href="{% url 'myadmin_shop_index' 1 %}"><i class="fa fa-sitemap"></i> <span>店铺管理</span></a></li>
                 <li class="treeview">
-                    <a href="category.html"><i class="fa fa-cutlery"></i> <span>菜品管理</span>
+                    <a href="#"><i class="fa fa-cutlery"></i> <span>菜品管理</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="category.html"> <i class="fa fa-circle-o"></i> 菜品分类</a></li>
+                        <li><a href="{% url 'myadmin_category_index' 1 %}"> <i class="fa fa-circle-o"></i> 菜品分类</a></li>
                         <li><a href="product.html"> <i class="fa fa-circle-o"></i> 菜品信息</a></li>
                     </ul>
                 </li>
