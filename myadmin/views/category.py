@@ -2,6 +2,7 @@
 from datetime import datetime
 
 from django.core.paginator import Paginator
+from django.http import JsonResponse
 from django.shortcuts import render
 
 from myadmin.models import Category, Shop
@@ -35,6 +36,11 @@ def index(request, pIndex=1):
 
     context = {'categorylist': list2, 'plist': plist, 'pIndex': pIndex, 'maxpage': maxpages, "mywhere": mywhere}
     return render(request, 'myadmin/category/index.html', context)
+
+
+def loadCategory(request, sid):
+    clist = Category.objects.filter(status__lt=9, shop_id=sid).values("id", 'name')
+    return JsonResponse({'data': list(clist)})
 
 
 def add(request):

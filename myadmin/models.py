@@ -47,9 +47,30 @@ class Shop(models.Model):
 class Category(models.Model):
     shop_id = models.IntegerField()
     name = models.CharField(max_length=255)
-    status = models.IntegerField(default=1)  # 状态1正常2禁用6管理员9删除
+    status = models.IntegerField(default=1)  # 状态1正常2禁用9删除
     create_at = models.DateTimeField(default=datetime.now)
     update_at = models.DateTimeField(default=datetime.now)
 
     class Meta:
         db_table = 'category'
+
+
+class Product(models.Model):
+    shop_id = models.IntegerField()
+    category_id = models.IntegerField()
+    cover_pic = models.CharField(max_length=255)
+    name = models.CharField(max_length=50)
+    price = models.FloatField()
+    status = models.IntegerField(default=1)  # 状态1正常2停售9删除
+    create_at = models.DateTimeField(default=datetime.now)
+    update_at = models.DateTimeField(default=datetime.now)
+
+    def toDict(self):
+        shopname = self.name.split("-")
+        return {'id': self.id, 'shop_id': self.shop_id, 'category_id': self.category_id, 'cover_pic': self.cover_pic,
+                'name': self.name, 'price': self.price, 'status': self.status,
+                'create_at': self.create_at.strftime('%Y-%m-%d %H:%M:%S'),
+                'update_at': self.update_at.strftime('%Y-%m-%d %H:%M:%S')}
+
+    class Meta:
+        db_table = 'product'
