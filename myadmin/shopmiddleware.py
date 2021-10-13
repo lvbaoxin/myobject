@@ -18,5 +18,11 @@ class ShopMiddleware:
                 # 重定向
                 return redirect(reverse("myadmin_login"))
 
+        # 大堂点餐请求的判断，判断是否登录(session中是否有webuser)
+        if re.match(r"^/web", path):
+            # 判断是否登录(webuser)
+            if 'webuser' not in request.session:
+                # 重定向
+                return redirect(reverse("web_login"))
         response = self.get_response(request)
         return response

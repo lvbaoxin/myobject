@@ -46,7 +46,7 @@
       <div class="form-group has-feedback">
         <input type="text" class="form-control" name = 'code' style="width:150px" placeholder="验证码">
         <span class="form-control-feedback" style="width:150px">
-			<img src="{% url 'myadmin_verify' %}"/>
+			<img src="{% url 'myadmin_verify' %}" onclick="this.src = '{% url 'myadmin_verify' %}?sn='+Math.random()"/>
         </span>
       </div>
       <div class="row">
@@ -64,18 +64,18 @@
 
 <!-- jQuery 3 -->
 <script src="{% static 'myadmin/bower_components/jquery/dist/jquery.min.js'%}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{% static 'myadmin/bower_components/bootstrap/dibootstrap.min.js'%}"></script>
-<!-- iCheck -->
-<script src="{% static 'myadmin/plugins/iCheck/icheck.min.js'%}"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-  });
-</script>
+{#<!-- Bootstrap 3.3.7 -->#}
+{#<script src="{% static 'myadmin/bower_components/bootstrap/dibootstrap.min.js'%}"></script>#}
+{#<!-- iCheck -->#}
+{#<script src="{% static 'myadmin/plugins/iCheck/icheck.min.js'%}"></script>#}
+{#<script>#}
+{#  $(function () {#}
+{#    $('input').iCheck({#}
+{#      checkboxClass: 'icheckbox_square-blue',#}
+{#      radioClass: 'iradio_square-blue',#}
+{#      increaseArea: '20%' /* optional */#}
+{#    });#}
+{#  });#}
+{#</script>#}
 </body>
 </html>
