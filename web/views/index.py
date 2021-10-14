@@ -12,6 +12,13 @@ def index(request):
 
 
 def webindex(request):
+    # 尝试从session中获取名字为cartlist的购物车信息
+    cartlist = request.session.get("cartlist", {})
+    total_money = 0
+    for vo in cartlist.values():
+        total_money += vo['num']*vo['price']
+
+    request.session['total_money'] = total_money
     context = {'categorylist': request.session.get('categorylist', {}).items()}
     return render(request, 'web/index.html', context)
 
