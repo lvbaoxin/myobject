@@ -87,8 +87,7 @@ class Member(models.Model):
     def toDict(self):
         return {'id': self.id, 'nickname': self.nickname, 'avatar': self.avatar, 'mobile': self.mobile,
                 'status': self.status,
-                'create_at': self.create_at.strftime('%Y-%m-%d %H:%M:%S'),
-                'update_at': self.update_at.strftime('%Y-%m-%d %H:%M:%S')}
+                }
 
     class Meta:
         db_table = 'member'

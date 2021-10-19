@@ -9,7 +9,7 @@ class ShopMiddleware:
 
     def __call__(self, request):
         path = request.path
-        print("url:", path)
+        # print("url:", path)
         # 判断管理后台是否登录 当前path是否以/myadmin开头，并且不在urllist中，才做是否登录判断
         urllist = ['/myadmin/login', '/myadmin/logout', '/myadmin/dologin', '/myadmin/verify']
         if re.match(r"^/myadmin", path) and (path not in urllist):
@@ -24,5 +24,13 @@ class ShopMiddleware:
             if 'webuser' not in request.session:
                 # 重定向
                 return redirect(reverse("web_login"))
+        # 判断移动端是否登录 当前path是否以/mobile开头，并且不在urllist中，才做是否登录判断
+        urllist = ['/mobile/register', '/mobile/doregister']
+        if re.match(r"^/mobile", path) and (path not in urllist):
+            # 判断是否登录(key名为mobileuser)
+            if 'mobileuser' not in request.session:
+                # 重定向
+                return redirect(reverse("mobile_register"))
+
         response = self.get_response(request)
         return response
