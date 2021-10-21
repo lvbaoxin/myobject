@@ -5,6 +5,7 @@ from myadmin.views import shop
 from myadmin.views import category
 from myadmin.views import product
 from myadmin.views import member
+from myadmin.views import order
 urlpatterns = [
     path('', index.index, name="myadmin_index"),
     path('login', index.login, name="myadmin_login"),  # 加载登录表单
@@ -43,4 +44,5 @@ urlpatterns = [
     # 会员信息路由
     path('member/<int:pIndex>', member.index, name="myadmin_member_index"),  # 浏览
     path('member/del<int:mid>', member.delete, name="myadmin_member_delete"),  # 执行删除
+    path('order/<int:pIndex>', order.index, name="myadmin_order_index"),  # 浏览
 ]

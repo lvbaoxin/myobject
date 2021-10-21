@@ -111,7 +111,8 @@ class Orders(models.Model):
 #订单详情模型
 class OrderDetail(models.Model):
     order_id = models.IntegerField()  #订单id
-    product_id = models.IntegerField()  #菜品id
+    # product_id = models.IntegerField()  #菜品id
+    product = models.ForeignKey('Product',on_delete=models.CASCADE)
     product_name = models.CharField(max_length=50) #菜品名称
     price = models.FloatField()     #单价
     quantity = models.IntegerField()  #数量
